@@ -1,0 +1,25 @@
+// implementation of your parallel sorting
+/*
+ * Three conditions: 
+
+ * 1: p > n
+ * construct a n-processor communicator out of comm: new_comm
+ * run parallel_sort(int *begin, int* end, new_comm)
+ *
+ * 2: 1 < p <= n;
+
+ *    a: randomly choose the pivot between 0 and end - begin - 1;
+ *    b: do the partition locally
+ *    c: collect the number of each subarray and get the total number m1 and m2; (for each process, Allgather)
+ *    d: Assign new subproblems, calculate the destination of sending and receiving.
+ *    e: parallel_sort(begin, end, newnewcomm)
+ *
+ * 3: p = 1;
+
+ * Use available C++ function to sort. No more work to do. 
+ */
+
+input.py 是用来生成随机数的
+
+./sort -o -(input file) 可以显示排序结果
+或者 mpirun -np 4 ./mpi_tests， 可在mpi_test里更改测试条件
